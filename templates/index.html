@@ -1,0 +1,84 @@
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route('/')
+def home():
+    return render_template("index.html")
+
+@app.route('/health')
+def health():
+    return '✅ Server is up and running'
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0', port=5000)
+
+ubuntu@ip-172-31-28-34:~/project/simple-flask-app$ cat requirements.txt
+flask==2.2.2
+Werkzeug==2.2.2
+
+ubuntu@ip-172-31-28-34:~/project/simple-flask-app$ ls
+Dockerfile  app.py  requirements.txt  templates
+ubuntu@ip-172-31-28-34:~/project/simple-flask-app$ cd templates/
+ubuntu@ip-172-31-28-34:~/project/simple-flask-app/templates$ ls
+index.html
+ubuntu@ip-172-31-28-34:~/project/simple-flask-app/templates$ cat index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome | Docker Learning Hub</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+            text-align: center;
+            padding-top: 80px;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            margin: auto;
+            width: 60%;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+        }
+        h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+            color: #00d8ff;
+        }
+        h2 {
+            font-size: 26px;
+            margin-top: 0;
+            font-weight: normal;
+            color: #a0e9ff;
+        }
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+        .footer {
+            margin-top: 60px;
+            font-size: 14px;
+            color: #cccccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐳 Welcome to Docker World</h1>
+        <h2>Your journey into containerization starts here</h2>
+        <p>Docker is a platform designed to make it easier to create, deploy, and run applications using containers.</p>
+        <p>With Docker, developers can package an application with all of its dependencies into a standardized unit for software development.</p>
+        <p>Whether you're just starting or looking to master DevOps workflows, Docker is an essential tool in modern software development.</p>
+    </div>
+
+    <div class="footer">
+        &copy; 2025 Docker Learning Hub | Built with Flask & ❤️
+    </div>
+</body>
+</html>
